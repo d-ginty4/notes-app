@@ -19,11 +19,11 @@
   "main": "public/electron.js",
   "homepage": "./",
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm run dev",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "concurrently -k \"cross-env BROWSER=none npm start\" \"npm:electron\"",
+    "dev": "concurrently -k \"cross-env BROWSER=none react-scripts start\" \"npm:electron\"",
     "electron": "wait-on tcp:192.168.0.228:3000 && electron .",
     "electron-dev": "electron ."
   },
