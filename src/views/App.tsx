@@ -1,4 +1,5 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom"
+import '../sass/style.scss'
 import Home from "./Home";
 import Layout from "./Nav";
 import Projects from "./Projects";
