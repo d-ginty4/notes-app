@@ -1,9 +1,5 @@
-$myColor: red;
+@import "config";
 
 body{
-    background-color: aqua;
-}
-
-h1 {
-    color: $myColor;
+    font-family: $font;
 }
