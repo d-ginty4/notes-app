@@ -1,4 +1,4 @@
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHouse,
@@ -7,7 +7,7 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Layout = () => {
+const NavbarTop = () => {
   return (
     <>
       <nav className="navbar is-fixed-top is-size-4 has-text-weight-bold has-background-primary ">
@@ -38,9 +38,8 @@ const Layout = () => {
           </a>
         </div>
       </nav>
-      <Outlet />
     </>
   );
 };
 
-export default Layout;
+export default NavbarTop;

@@ -1,5 +1,16 @@
 @import "config";
+@import "sideNav";
 
 body{
+    padding-top: 50px;
     font-family: $font;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: $background;
 }
