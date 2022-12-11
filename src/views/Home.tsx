@@ -1,8 +1,10 @@
 const Home = () => {
   return (
-    <>
-      <h1>Home</h1>
-    </>
+    <main>
+      <section className="section no-pad">
+        {/* <h1>Home</h1> */}
+      </section>
+    </main>
   );
 };
 

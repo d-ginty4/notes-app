@@ -8,7 +8,7 @@ import Projects from "./Projects";
 import Error from "./Error";
 import Calendar from "./Calendar";
 import Settings from "./Settings";
-import Entry from "./entry";
+import Landing from "./Landing";
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
             <Route path="projects" element={<Projects />} />
             <Route path="calendar" element={<Calendar />} />
             <Route path="settings" element={<Settings />} />
-            <Route path="entry" element={<Entry />} />
+            <Route path="landing" element={<Landing />} />
             <Route path="*" element={<Error />} />
           </Route>
         </Routes>

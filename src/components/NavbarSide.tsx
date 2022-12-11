@@ -2,16 +2,16 @@ import {
   faTimes,
   faUserCircle,
   faCog,
-  faSignOutAlt
+  faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
 const NavbarSide = () => {
   return (
-    <div className="navSideBar">
-      <div className="has-background-info-light has-text-centered sidebar">
-        <span className="delete is-large mt-3 ml-3">
+    <div>
+      <div className="has-background-info-light has-text-centered sideNav">
+        <span className="delete is-large mt-3 ml-3 sideNav__close-btn">
           <FontAwesomeIcon icon={faTimes} />
         </span>
         <div className="pt-6">
@@ -19,7 +19,7 @@ const NavbarSide = () => {
             <li>
               <FontAwesomeIcon
                 icon={faUserCircle}
-                className="sidebar__user-icon"
+                className="sideNav__user-icon"
               />
             </li>
             <li>
@@ -37,7 +37,7 @@ const NavbarSide = () => {
             </li>
             <li>
               <Link
-                to={"/entry"}
+                to={"/landing"}
                 className="is-size-3 has-text-weight-bold has-text-dark"
               >
                 <FontAwesomeIcon icon={faSignOutAlt} />

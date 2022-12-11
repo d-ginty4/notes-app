@@ -2,8 +2,15 @@
 @import "sideNav";
 
 body{
-    padding-top: 50px;
     font-family: $font;
+}
+
+main {
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    top: 64px;
+    transition: filter 0.5s ease;
 }
 
 ::-webkit-scrollbar {
