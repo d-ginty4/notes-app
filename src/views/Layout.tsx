@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
-import NavbarTop from "../components/NavbarTop";
-import NavbarSide from "../components/NavbarSide";
+import { Navbar } from "../components/Navbar";
+import { Sidebar } from "../components/Sidebar";
 
-const Layout = () => {
+const Layout: React.FC = () => {
   return (
     <>
-      <NavbarTop/>
-      <NavbarSide/>
+      <Navbar/>
+      <Sidebar/>
       <Outlet />
     </>
   );

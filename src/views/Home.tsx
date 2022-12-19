@@ -1,9 +1,7 @@
-const Home = () => {
+const Home: React.FC = () => {
   return (
     <main>
-      <section className="section no-pad">
-        {/* <h1>Home</h1> */}
-      </section>
+      <h1>Home</h1>
     </main>
   );
 };

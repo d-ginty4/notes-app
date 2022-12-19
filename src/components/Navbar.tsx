@@ -7,7 +7,11 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
-const NavbarTop = () => {
+interface Props{
+
+}
+
+export const Navbar: React.FC<Props> = () => {
   return (
     <>
       <nav className="navbar is-fixed-top is-size-4 has-text-weight-bold has-background-primary ">
@@ -41,5 +45,3 @@ const NavbarTop = () => {
     </>
   );
 };
-
-export default NavbarTop;

@@ -7,7 +7,11 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
-const NavbarSide = () => {
+interface Props {
+  
+}
+
+export const Sidebar: React.FC<Props> = () => {
   return (
     <div>
       <div className="has-background-info-light has-text-centered sideNav">
@@ -50,5 +54,3 @@ const NavbarSide = () => {
     </div>
   );
 };
-
-export default NavbarSide;
