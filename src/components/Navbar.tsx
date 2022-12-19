@@ -7,11 +7,18 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
-interface Props{
-
+interface Props {
+  isSidebarOpen: boolean;
+  setIsSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const Navbar: React.FC<Props> = () => {
+export const Navbar: React.FC<Props> = ({ isSidebarOpen, setIsSidebarOpen }) => {
+
+  // Click events
+  const openSidebar = () => {
+    setIsSidebarOpen(true)
+  }
+
   return (
     <>
       <nav className="navbar is-fixed-top is-size-4 has-text-weight-bold has-background-primary ">
@@ -37,7 +44,14 @@ export const Navbar: React.FC<Props> = () => {
         </div>
 
         <div className="navbar-end">
-          <a className="navbar-item is-size-4">
+          <a
+            className={`${
+              isSidebarOpen
+                ? "navbar-item is-size-4 sidebar-button move"
+                : "navbar-item is-size-4 sidebar-button"
+            }`}
+            onClick={openSidebar}
+          >
             User <FontAwesomeIcon className="ml-3" icon={faUser} />
           </a>
         </div>

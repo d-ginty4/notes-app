@@ -1,23 +1,26 @@
 @import "config";
 @import "layout";
 
-body{
-    font-family: $font;
+body {
+  font-family: $font;
 }
 
-// main {
-//     width: 100%;
-//     position: absolute;
-//     z-index: 1;
-//     top: 64px;
-//     transition: filter 0.5s ease;
-// }
+main {
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  transition: filter 0.5s ease;
+}
 
 ::-webkit-scrollbar {
-    width: 12px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color: $background;
+  border-radius: 10px;
+  background-color: $background;
+}
+
+h1 {
+  font-size: xxx-large;
 }
