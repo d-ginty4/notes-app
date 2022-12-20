@@ -12,12 +12,14 @@ interface Props {
   setIsSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const Navbar: React.FC<Props> = ({ isSidebarOpen, setIsSidebarOpen }) => {
-
+export const Navbar: React.FC<Props> = ({
+  isSidebarOpen,
+  setIsSidebarOpen,
+}) => {
   // Click events
   const openSidebar = () => {
-    setIsSidebarOpen(true)
-  }
+    setIsSidebarOpen(true);
+  };
 
   return (
     <>
