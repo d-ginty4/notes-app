@@ -5,32 +5,28 @@ const Projects: React.FC = () => {
   return (
     <>
       <section className="section no-pad my-5 pb-0">
-        <button
-          className="button has-text-weight-bold is-size-4 is-pulled-right"
-          id="openForm"
-        >
-          <span className="icon-text">
-            <i className="fas fa-plus mr-3"></i>Create new Project
-          </span>
-        </button>
-
         <div className="dropdown is-hoverable">
           <div className="dropdown-trigger">
             <button className="button has-text-weight-bold is-size-4">
-              <span className="is-hidden" id="projectId"></span>
-              <span id="projectName"></span>
-              <span className="icon is-small">
-                <i className="fas fa-angle-down"></i>
-              </span>
+              <span>Project name</span>
+              <FontAwesomeIcon icon={faAngleDown} />
             </button>
           </div>
-          <div className="dropdown-menu" id="dropdown-menu">
-            <div
-              className="dropdown-content has-background-info-light"
-              id="projectList"
-            ></div>
+          <div className="dropdown-menu">
+            <div className="dropdown-content has-background-info-light">
+              <span className="dropdown-item">Item 1</span>
+              <hr className="dropdown-divider"></hr>
+              <span className="dropdown-item">Item 2</span>
+              <hr className="dropdown-divider"></hr>
+              <span className="dropdown-item">Item 3</span>
+            </div>
           </div>
         </div>
+
+        <button className="button has-text-weight-bold is-size-4 is-pulled-right">
+          <FontAwesomeIcon icon={faPlus} />
+          Create new Project
+        </button>
       </section>
 
       <section className="section no-pad">
@@ -48,7 +44,7 @@ const Projects: React.FC = () => {
               >
                 <span className="icon-text">
                   <span className="icon">
-                    <i className="fas fa-plus"></i>
+                    <FontAwesomeIcon icon={faPlus} />
                   </span>
                   <span className="is-size-4">Add file</span>
                 </span>
@@ -65,7 +61,7 @@ const Projects: React.FC = () => {
               <button className="button has-text-weight-bold mr-6" id="new-job">
                 <span className="icon-text">
                   <span className="icon">
-                    <i className="fas fa-plus"></i>
+                    <FontAwesomeIcon icon={faPlus}/>
                   </span>
                   <span className="is-size-4">Add New Job</span>
                 </span>
@@ -77,10 +73,10 @@ const Projects: React.FC = () => {
             <table className="table is-striped is-size-4">
               <thead>
                 <tr>
-                  <th style={{width: '15%'}}>Title</th>
-                  <th style={{width: '15%'}}>Due Date</th>
-                  <th style={{width: '45%'}}>Task</th>
-                  <th colSpan={2} style={{width: '25%'}}>
+                  <th style={{ width: "15%" }}>Title</th>
+                  <th style={{ width: "15%" }}>Due Date</th>
+                  <th style={{ width: "45%" }}>Task</th>
+                  <th colSpan={2} style={{ width: "25%" }}>
                     Options
                   </th>
                 </tr>
@@ -101,7 +97,7 @@ const Projects: React.FC = () => {
               >
                 <span className="icon-text">
                   <span className="icon">
-                    <i className="fas fa-plus"></i>
+                    <FontAwesomeIcon icon={faPlus} />
                   </span>
                   <span className="is-size-4">Add New Note</span>
                 </span>

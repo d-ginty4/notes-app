@@ -1,5 +1,7 @@
 @import "config";
 @import "layout";
+@import "home";
+@import "projects";
 
 body {
   font-family: $font;
@@ -13,15 +15,338 @@ main {
   padding-top: 50px;
 }
 
+.blur{
+  filter: blur(3px);
+  pointer-events: none;
+}
+
+.my-button{
+  display: block;
+  margin: 20px auto;
+}
+
+.heading{
+  font-size: 100px;
+}
+
+.sidebar{
+  position: fixed;
+  right: 0;
+  margin: 0;
+  top: 64px;
+  height: 100vh;
+  width: 20%;
+  z-index: 99;
+  opacity: 90%;
+  transform: translateX(100%);
+  transition: transform 0.5s ease;
+
+  #{&}__user-icon{
+    font-size: 25vh;
+  }
+}
+
+.active{
+  transform: translateX(0);
+}
+
+.close-btn{
+  float: left;
+}
+
+#sidebar-button{
+  transition: transform 0.5s ease;
+}
+
+.move{
+  transform: translateX(100%);
+}
+
+.button{
+  font-family: $font;
+  background: $primary;
+}
+
+.sideForm{
+  position: fixed;
+  left: 30%;
+  top: 100px;
+  width: 40%;
+  z-index: 100;
+  border-radius: 10px;
+  background: $note;
+  transform: translateX(-200%);
+  transition: transform 1s ease;
+
+  .label{
+    float: left;
+    margin-bottom: 0;
+  }
+
+  .btn{
+    padding: 10px;
+  }
+}
+
+.move-form{
+  transform: translateX(0%);
+}
+
+.card{
+  background: $note;
+  width: 31%;
+  margin: 1rem;
+}
+
+.notes{
+  display: flex;
+  flex-flow: row wrap;
+
+  .title{
+    margin: 20px;
+    margin-bottom: 0;
+  }
+
+  .card-content{
+    padding-top: 0;
+  }
+}
+
+.no-pad{
+  padding-top: 0;
+  padding-bottom: 30px;
+}
+
+.containerCalendar{
+  color: $light;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row nowrap
+}
+
+.calendar{
+  width: 60vw;
+
+  .month{
+    width: 100%;
+    background-color: $primary;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .weekdays{
+    width: 100%;
+    padding: 0 0.4rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .weekdays div{
+    letter-spacing: .1rem;
+    width: calc(60vw/7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .days{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: .2rem;
+  }
+  
+  .days div{
+    font-size: 1.4rem;
+    margin: .3rem;
+    width: calc(54vw/7);
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .days div:hover:not(.today){
+    background-color: $light;
+    color: $dark;
+    border: .2rem solid $primary;
+    cursor: pointer;
+    font-weight: 800;
+  }
+  
+  .active{
+    background-color: $primary;
+  }
+
+  .change-month{
+    background: $primary;
+    color: $dark;
+    border: none;
+    cursor: pointer;
+    font-size: x-large;
+  }
+
+  .hide-date{
+    color: $dark;
+    pointer-events: none;
+  }
+}
+
+.jobContainer{
+  background: $dark;
+  height: auto;
+  width: 25vw;
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  align-items: center;
+  justify-content: center;
+
+  .job-title{
+    color: $primary;
+    position: absolute;
+    top: 0;
+  }
+
+  .jobs{
+    width: calc(100% - 0.75rem * 2);
+    height: 350px;
+    overflow-y: scroll;
+
+    dt{
+      font-size: x-large;
+    }
+
+    dt span.icon{
+      font-size: medium;
+    }
+
+    dd{
+      font-size: large;
+    }
+  }
+
+  .button{
+    position: absolute;
+    font-size: x-large;
+    padding: 0 10px;
+    bottom: 0;
+  }
+}
+
+.dropdown-item{
+  font-size: large;
+}
+
+#message{
+  background: $primary;
+  width: fit-content;
+  height: fit-content;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+#edit-note:hover, #delete-note:hover{
+  cursor: pointer;
+  font-size: x-large;
+}
+
+.calendar-icon {
+  height: 1rem;
+  
+  .dropdown-trigger:hover{
+    #edit-note, #delete-note{
+      cursor: pointer;
+      font-size: large;
+      color: $primary;
+    }
+  }
+}
+
 ::-webkit-scrollbar {
   width: 12px;
 }
-
+ 
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background-color: $background;
+  background-color: $primary;
 }
 
-h1 {
-  font-size: xxx-large;
+.editForm{
+  position: fixed;
+  left: 30%;
+  top: 100px;
+  width: 40%;
+  z-index: 100;
+  border-radius: 10px;
+  background: $note;
+  transform: translateY(200%);
+  transition: transform 1s ease;
+
+  .label{
+      float: left;
+      margin-bottom: 0;
+  }
+
+  .btn{
+      padding: 10px;
+  }
+}
+
+.move-editForm{
+  transform: translateY(0%);
+}
+
+.layout {
+  position: relative;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 0;
+}
+
+.jobs{
+  width: 95%;
+  margin: auto;
+}
+
+table{
+  text-align: center;
+
+  .#{&}-title, .#{&}-dueDate{
+      white-space: nowrap;
+  }
+}
+
+.addFileForm{
+  position: fixed;
+  left: 30%;
+  top:300px;
+  width: 40%;
+  z-index: 100;
+  border-radius: 10px;
+  background: $note;
+  transform: translateX(-200%);
+  transition: transform 1s ease;
+
+  .label{
+    float: left;
+    margin-bottom: 0;
+  }
+
+  .btn{
+    padding: 10px;
+  }
+}
+
+.move-addFileForm{
+  transform: translateX(0%);
 }
