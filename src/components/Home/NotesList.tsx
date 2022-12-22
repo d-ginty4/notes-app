@@ -1,7 +1,12 @@
 import React from 'react'
+import { Note } from '../General/Note'
 
 export const NotesList:React.FC = () => {
   return (
-    <div>NotesList</div>
+    <div className="notes">
+      <Note/>
+      <Note/>
+      <Note/>
+    </div>
   )
 }

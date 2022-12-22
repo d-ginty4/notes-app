@@ -3,7 +3,7 @@ import {
   faPlus,
   faAngleDown,
 } from "@fortawesome/free-solid-svg-icons";
-import { ProjectNotesList } from "../components/Projects/Project-notes/ProjectNotesList";
+import { ProjectNotesList } from "../components/Projects/ProjectNotesList";
 import { ProjectJobsList } from "../components/Projects/Project-jobs/ProjectJobsList";
 import { ProjectDetails } from "../components/Projects/ProjectDetails";
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { ProjectSummary } from "./ProjectSummary";
 
 export const ProjectList: React.FC = () => {
   return (
@@ -13,7 +14,11 @@ export const ProjectList: React.FC = () => {
               <th>Link</th>
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody>
+            <ProjectSummary />
+            <ProjectSummary />
+            <ProjectSummary />
+          </tbody>
         </table>
       </div>
       <div className="column is-half">

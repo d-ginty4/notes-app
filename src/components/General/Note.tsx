@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTimes } from "@fortawesome/free-solid-svg-icons";
 
-export const ProjectNotesListItem: React.FC = () => {
+export const Note: React.FC = () => {
   return (
     <div className="card">
       <div className="is-pulled-right">

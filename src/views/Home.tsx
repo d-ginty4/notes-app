@@ -18,9 +18,7 @@ const Home: React.FC = () => {
           <FontAwesomeIcon icon={faPlus} className="mr-2" /> Create new quick
           note
         </button>
-        <div className="notes">
-          <NotesList />
-        </div>
+        <NotesList />
       </section>
     </>
   );
