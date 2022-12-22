@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import { Navbar } from "../components/Navbar";
-import { Sidebar } from "../components/Sidebar";
+import { Navbar } from "../components/Layout/Navbar";
+import { Sidebar } from "../components/Layout/Sidebar";
 import { useState } from "react";
 const Layout: React.FC = () => {
   // useStates

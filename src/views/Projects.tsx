@@ -1,5 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPlus,
+  faAngleDown,
+} from "@fortawesome/free-solid-svg-icons";
+import { ProjectNotesList } from "../components/Projects/Project-notes/ProjectNotesList";
+import { ProjectJobsList } from "../components/Projects/Project-jobs/ProjectJobsList";
+import { ProjectDetails } from "../components/Projects/ProjectDetails";
 
 const Projects: React.FC = () => {
   return (
@@ -31,17 +37,16 @@ const Projects: React.FC = () => {
 
       <section className="section no-pad">
         <div className="content">
-          <div id="projectDetails"></div>
+          <ProjectDetails />
           <hr />
+
+          {/* Attachments Section */}
           <div className="layout">
             <h2 className="has-text-weight-semibold is-italic">
               &emsp; Attachments
             </h2>
             <div className="vertical-center">
-              <button
-                className="button has-text-weight-bold mr-6"
-                id="new-file"
-              >
+              <button className="button has-text-weight-bold mr-6">
                 <span className="icon-text">
                   <span className="icon">
                     <FontAwesomeIcon icon={faPlus} />
@@ -51,50 +56,34 @@ const Projects: React.FC = () => {
               </button>
             </div>
           </div>
-
           <hr />
+
+          {/* Project jobs section */}
           <div className="layout">
             <h2 className="has-text-weight-semibold is-italic">
               &emsp; Project Jobs
             </h2>
             <div className="vertical-center">
-              <button className="button has-text-weight-bold mr-6" id="new-job">
+              <button className="button has-text-weight-bold mr-6">
                 <span className="icon-text">
                   <span className="icon">
-                    <FontAwesomeIcon icon={faPlus}/>
+                    <FontAwesomeIcon icon={faPlus} />
                   </span>
                   <span className="is-size-4">Add New Job</span>
                 </span>
               </button>
             </div>
           </div>
-
-          <div className="jobs">
-            <table className="table is-striped is-size-4">
-              <thead>
-                <tr>
-                  <th style={{ width: "15%" }}>Title</th>
-                  <th style={{ width: "15%" }}>Due Date</th>
-                  <th style={{ width: "45%" }}>Task</th>
-                  <th colSpan={2} style={{ width: "25%" }}>
-                    Options
-                  </th>
-                </tr>
-              </thead>
-              <tbody id="jobSection"></tbody>
-            </table>
-          </div>
-
+          <ProjectJobsList />
           <hr />
+
+          {/* Project notes section */}
           <div className="layout">
             <h2 className="has-text-weight-semibold is-italic">
               &emsp; Project Notes
             </h2>
             <div className="vertical-center">
-              <button
-                className="button has-text-weight-bold mr-6"
-                id="new-note"
-              >
+              <button className="button has-text-weight-bold mr-6">
                 <span className="icon-text">
                   <span className="icon">
                     <FontAwesomeIcon icon={faPlus} />
@@ -104,8 +93,8 @@ const Projects: React.FC = () => {
               </button>
             </div>
           </div>
+          <ProjectNotesList />
 
-          <div className="notes" id="notesSection"></div>
         </div>
       </section>
     </>

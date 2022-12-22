@@ -1,7 +1,7 @@
-import { ProjectList } from "../components/ProjectList";
+import { ProjectList } from "../components/Home/ProjectList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { NotesList } from "../components/NotesList";
+import { NotesList } from "../components/Home/NotesList";
 
 const Home: React.FC = () => {
   return (
