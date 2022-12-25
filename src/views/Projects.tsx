@@ -1,13 +1,18 @@
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPlus,
-  faAngleDown,
-} from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { ProjectNotesList } from "../components/Projects/ProjectNotesList";
 import { ProjectJobsList } from "../components/Projects/Project-jobs/ProjectJobsList";
 import { ProjectDetails } from "../components/Projects/ProjectDetails";
+import { NoteForm } from "../components/General/NoteForm";
 
 const Projects: React.FC = () => {
+  const [openNoteForm, setOpenNoteForm] = useState<boolean>(false);
+
+  const openNoteFormFunc = (): void => {
+    setOpenNoteForm(true);
+  };
+
   return (
     <>
       <section className="section no-pad my-5 pb-0">
@@ -88,13 +93,18 @@ const Projects: React.FC = () => {
                   <span className="icon">
                     <FontAwesomeIcon icon={faPlus} />
                   </span>
-                  <span className="is-size-4">Add New Note</span>
+                  <span className="is-size-4" onClick={openNoteFormFunc}>
+                    Add New Note
+                  </span>
                 </span>
               </button>
             </div>
           </div>
           <ProjectNotesList />
-
+          <NoteForm
+            openNoteForm={openNoteForm}
+            setOpenNoteForm={setOpenNoteForm}
+          />
         </div>
       </section>
     </>

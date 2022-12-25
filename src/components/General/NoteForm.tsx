@@ -1,12 +1,24 @@
 import React from "react";
 
-export const NoteForm: React.FC = () => {
+interface Props {
+  openNoteForm: boolean;
+  setOpenNoteForm: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const NoteForm: React.FC<Props> = ({openNoteForm, setOpenNoteForm}) => {
+  const closeForm = (): void => {
+    setOpenNoteForm(false)
+  }
+
   return (
     <div
-      className="sideForm has-text-centered container p-3 mt-6"
-      id="new-note-form"
+      className={`${
+        openNoteForm
+          ? "sideForm has-text-centered container p-3 mt-6 move-form"
+          : "sideForm has-text-centered container p-3 mt-6"
+      }`}
     >
-      <a className="delete is-large close-btn" id="close-btn4"></a>
+      <span className="delete is-large close-btn" onClick={closeForm}></span>
       <h1 className="has-text-weight-bold is-underlined is-size-2">New Note</h1>
 
       <div className="field ">
@@ -15,7 +27,6 @@ export const NoteForm: React.FC = () => {
           <input
             className="input has-background-light"
             type="text"
-            id="newNoteTitle"
           />
         </div>
       </div>
@@ -25,7 +36,6 @@ export const NoteForm: React.FC = () => {
         <div className="control">
           <textarea
             className="textarea has-background-light"
-            id="newNoteNote"
           ></textarea>
         </div>
       </div>
@@ -34,7 +44,6 @@ export const NoteForm: React.FC = () => {
         <div className="control">
           <button
             className="button has-text-weight-bold has-background-light is-size-4 is-inline-block"
-            id="createNote"
           >
             Create Note
           </button>
