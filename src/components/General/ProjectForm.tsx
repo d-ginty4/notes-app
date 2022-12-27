@@ -1,14 +1,25 @@
 import React from "react";
 
-export const ProjectForm: React.FC = () => {
+interface Props {
+  openProjectForm: boolean;
+  setOpenProjectForm: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const ProjectForm: React.FC<Props> = ({openProjectForm, setOpenProjectForm}) => {
+  const closeForm = () => {
+    setOpenProjectForm(false)
+  }
+
   return (
     <div
-      className="sideForm has-text-centered container p-3 mt-6"
-      id="new-project-form"
+      className={`${
+        openProjectForm
+          ? "sideForm has-text-centered container p-3 mt-6 move-form"
+          : "sideForm has-text-centered container p-3 mt-6"
+      }`}
     >
-      <a className="delete is-large close-btn" id="close-btn2"></a>
+      <span className="delete is-large close-btn" onClick={closeForm}></span>
       <h1 className="has-text-weight-bold is-underlined is-size-2">
-        {" "}
         New Project
       </h1>
 

@@ -1,0 +1,77 @@
+.containerCalendar{
+  color: $light;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row nowrap
+}
+
+.calendar{
+  width: 60vw;
+
+  .month{
+    width: 100%;
+    background-color: $primary;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .weekdays{
+    width: 100%;
+    padding: 0 0.4rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .weekdays div{
+    letter-spacing: .1rem;
+    width: calc(60vw/7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .days{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: .2rem;
+  }
+  
+  .days div{
+    font-size: 1.4rem;
+    margin: .3rem;
+    width: calc(54vw/7);
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .days div:hover:not(.today){
+    background-color: $light;
+    color: $dark;
+    border: .2rem solid $primary;
+    cursor: pointer;
+    font-weight: 800;
+  }
+  
+  .active{
+    background-color: $primary;
+  }
+
+  .change-month{
+    background: $primary;
+    color: $dark;
+    border: none;
+    cursor: pointer;
+    font-size: x-large;
+  }
+
+  .hide-date{
+    color: $dark;
+    pointer-events: none;
+  }
+}

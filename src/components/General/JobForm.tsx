@@ -1,18 +1,25 @@
 import React from "react";
 
-export const JobForm: React.FC = () => {
+interface Props {
+  openJobForm: boolean;
+  setOpenJobForm: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const JobForm: React.FC<Props> = ({ openJobForm, setOpenJobForm }) => {
+  const closeForm = (): void => {
+    setOpenJobForm(false);
+  };
+
   return (
     <div
-      className="sideForm has-text-centered container p-3 mt-6"
-      id="new-job-form"
+      className={`${
+        openJobForm
+          ? "sideForm has-text-centered container p-3 mt-6 move-form"
+          : "sideForm has-text-centered container p-3 mt-6"
+      }`}
     >
-      <a className="delete is-large close-btn" id="close-btn6"></a>
-      <h1
-        className="has-text-weight-bold is-underlined is-size-2"
-        id="new-task"
-      >
-        New Job
-      </h1>
+      <span className="delete is-large close-btn" onClick={closeForm}></span>
+      <h1 className="has-text-weight-bold is-underlined is-size-2">New Job</h1>
 
       <div className="field">
         <label className="label is-size-3">Title</label>

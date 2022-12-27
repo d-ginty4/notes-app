@@ -22,11 +22,6 @@ export const Sidebar: React.FC<Props> = ({
     setIsSidebarOpen(false);
   };
 
-  const {loading} = useGlobalContext()
-
-  if(loading){
-
-  }
   return (
     <div
       className={`${

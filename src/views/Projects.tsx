@@ -5,12 +5,24 @@ import { ProjectNotesList } from "../components/Projects/ProjectNotesList";
 import { ProjectJobsList } from "../components/Projects/Project-jobs/ProjectJobsList";
 import { ProjectDetails } from "../components/Projects/ProjectDetails";
 import { NoteForm } from "../components/General/NoteForm";
+import { JobForm } from "../components/General/JobForm";
+import { ProjectForm } from "../components/General/ProjectForm";
 
 const Projects: React.FC = () => {
   const [openNoteForm, setOpenNoteForm] = useState<boolean>(false);
+  const [openJobForm, setOpenJobForm] = useState<boolean>(false);
+  const [openProjectForm, setOpenProjectForm] = useState<boolean>(false);
 
   const openNoteFormFunc = (): void => {
     setOpenNoteForm(true);
+  };
+
+  const openJobFormFunc = (): void => {
+    setOpenJobForm(true);
+  };
+
+  const openProjectFormFunc = (): void => {
+    setOpenProjectForm(true);
   };
 
   return (
@@ -34,10 +46,17 @@ const Projects: React.FC = () => {
           </div>
         </div>
 
-        <button className="button has-text-weight-bold is-size-4 is-pulled-right">
+        <button
+          className="button has-text-weight-bold is-size-4 is-pulled-right"
+          onClick={openProjectFormFunc}
+        >
           <FontAwesomeIcon icon={faPlus} />
           Create new Project
         </button>
+        <ProjectForm
+          openProjectForm={openProjectForm}
+          setOpenProjectForm={setOpenProjectForm}
+        />
       </section>
 
       <section className="section no-pad">
@@ -74,12 +93,15 @@ const Projects: React.FC = () => {
                   <span className="icon">
                     <FontAwesomeIcon icon={faPlus} />
                   </span>
-                  <span className="is-size-4">Add New Job</span>
+                  <span className="is-size-4" onClick={openJobFormFunc}>
+                    Add New Job
+                  </span>
                 </span>
               </button>
             </div>
           </div>
           <ProjectJobsList />
+          <JobForm openJobForm={openJobForm} setOpenJobForm={setOpenJobForm} />
           <hr />
 
           {/* Project notes section */}
