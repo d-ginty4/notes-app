@@ -6,6 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import { useGlobalContext } from "../../hooks/context";
 
 interface Props {
   isSidebarOpen: boolean;
@@ -21,6 +22,11 @@ export const Sidebar: React.FC<Props> = ({
     setIsSidebarOpen(false);
   };
 
+  const {loading} = useGlobalContext()
+
+  if(loading){
+
+  }
   return (
     <div
       className={`${

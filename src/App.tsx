@@ -9,7 +9,7 @@ import Error from "./views/Error";
 import Calendar from "./views/Calendar";
 import Settings from "./views/Settings";
 import Landing from "./views/Landing";
-import { AppProvider } from "./hooks/context";
+import { AppProvider} from "./hooks/context";
 
 const App: React.FC = () => {
   return (

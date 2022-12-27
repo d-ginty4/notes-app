@@ -1,17 +1,29 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, createContext } from "react";
 
-const AppContext = React.createContext();
+interface Children {
+  children: React.ReactNode;
+}
 
-export const AppProvider = ({ children }) => {
-  const [loading, setLoading] = useState(false);
-
-  return (
-    <AppContext.Provider value={{ loading, setLoading }}>
-      {children}
-    </AppContext.Provider>
-  );
+interface GlobalContent {
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
+const AppContext = createContext<GlobalContent>({
+  loading: true,
+  setLoading: () => {}
+})
+
+export const AppProvider: React.FC<Children> = ({children}) => {
+  const [loading, setLoading] = useState<boolean>(true)
+
+  return (
+    <AppContext.Provider value={{loading, setLoading}}>
+      {children}
+    </AppContext.Provider>
+  )
+}
+
 export const useGlobalContext = () => {
-    return useContext(AppContext)
+  return useContext(AppContext)
 }
