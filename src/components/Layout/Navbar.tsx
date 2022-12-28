@@ -2,12 +2,10 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faHouse,
-  faProjectDiagram,
-  faCalendarAlt,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { useGlobalContext } from "../../hooks/context";
+import { navItems as Items } from "../../data/nav-items";
 
 interface Props {
   isSidebarOpen: boolean;
@@ -30,15 +28,24 @@ export const Navbar: React.FC<Props> = ({
       <nav className="navbar is-fixed-top is-size-4 has-text-weight-bold has-background-primary ">
         <div className="navbar-start">
           <div className="navbar-item has-dropdown is-hoverable">
-            <Link to="/" className="navbar-link">
-              <FontAwesomeIcon className="mr-3" icon={faHouse} />
+            <span className="navbar-link">
+              {/* <FontAwesomeIcon className="mr-3" icon={faHouse} /> */}
               {page === "/"
                 ? "Home"
                 : page.substring(1).charAt(0).toUpperCase() + page.substring(2)}
-            </Link>
+            </span>
 
             <div className="navbar-dropdown has-background-info-light">
-              <Link to="/" className="navbar-item is-size-5">
+              {Items.map((item, index) => {
+                const { path, page, icon} = item;
+                return (
+                  <Link to={path} className="navbar-item is-size-5">
+                    <FontAwesomeIcon className="mr-3" icon={icon} />
+                    {page}
+                  </Link>
+                );
+              })}
+              {/* <Link to="/" className="navbar-item is-size-5">
                 <FontAwesomeIcon className="mr-3" icon={faHouse} />
                 Home
               </Link>
@@ -51,7 +58,7 @@ export const Navbar: React.FC<Props> = ({
               <Link to="/projects" className="navbar-item is-size-5">
                 <FontAwesomeIcon className="mr-3" icon={faProjectDiagram} />
                 Projects
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>
