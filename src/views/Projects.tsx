@@ -64,7 +64,7 @@ const Projects: React.FC = () => {
           <ProjectDetails />
           <hr />
 
-          {/* Attachments Section */}
+          {/* Attachments Section
           <div className="layout">
             <h2 className="has-text-weight-semibold is-italic">
               &emsp; Attachments
@@ -80,7 +80,7 @@ const Projects: React.FC = () => {
               </button>
             </div>
           </div>
-          <hr />
+          <hr /> */}
 
           {/* Project jobs section */}
           <div className="layout">
