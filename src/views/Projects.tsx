@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { ProjectNotesList } from "../components/Projects/ProjectNotesList";
@@ -7,12 +7,20 @@ import { ProjectDetails } from "../components/Projects/ProjectDetails";
 import { NoteForm } from "../components/General/NoteForm";
 import { JobForm } from "../components/General/JobForm";
 import { ProjectForm } from "../components/General/ProjectForm";
+import { useGlobalContext } from "../hooks/context";
 
 const Projects: React.FC = () => {
+  // Hooks
   const [openNoteForm, setOpenNoteForm] = useState<boolean>(false);
   const [openJobForm, setOpenJobForm] = useState<boolean>(false);
   const [openProjectForm, setOpenProjectForm] = useState<boolean>(false);
+  const { setPage } = useGlobalContext();
 
+  useEffect(() => {
+    setPage(window.location.pathname);
+  }, []);
+
+  // Click events
   const openNoteFormFunc = (): void => {
     setOpenNoteForm(true);
   };

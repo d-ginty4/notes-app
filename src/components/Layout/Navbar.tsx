@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -6,6 +7,7 @@ import {
   faCalendarAlt,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
+import { useGlobalContext } from "../../hooks/context";
 
 interface Props {
   isSidebarOpen: boolean;
@@ -16,6 +18,8 @@ export const Navbar: React.FC<Props> = ({
   isSidebarOpen,
   setIsSidebarOpen,
 }) => {
+  const { page } = useGlobalContext();
+
   // Click events
   const openSidebar = () => {
     setIsSidebarOpen(true);
@@ -28,10 +32,17 @@ export const Navbar: React.FC<Props> = ({
           <div className="navbar-item has-dropdown is-hoverable">
             <Link to="/" className="navbar-link">
               <FontAwesomeIcon className="mr-3" icon={faHouse} />
-              Home
+              {page === "/"
+                ? "Home"
+                : page.substring(1).charAt(0).toUpperCase() + page.substring(2)}
             </Link>
 
             <div className="navbar-dropdown has-background-info-light">
+              <Link to="/" className="navbar-item is-size-5">
+                <FontAwesomeIcon className="mr-3" icon={faHouse} />
+                Home
+              </Link>
+              <hr className="dropdown-divider" />
               <Link to="/calendar" className="navbar-item is-size-5">
                 <FontAwesomeIcon className="mr-3" icon={faCalendarAlt} />
                 Calender
