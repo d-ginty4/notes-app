@@ -9,10 +9,10 @@ import { useGlobalContext } from "../hooks/context";
 const Home: React.FC = () => {
   // Hooks
   const [openNoteForm, setOpenNoteForm] = useState<boolean>(false);
-  const { setPage } = useGlobalContext();
+  const { setPagePath } = useGlobalContext();
 
   useEffect(() => {
-    setPage(window.location.pathname);
+    setPagePath(window.location.pathname);
   }, []);
 
   // Click events

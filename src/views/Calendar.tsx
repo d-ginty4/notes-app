@@ -2,10 +2,10 @@ import { useEffect } from "react";
 import { useGlobalContext } from "../hooks/context";
 
 const Calendar: React.FC = () => {
-  const {setPage} = useGlobalContext()
+  const { setPagePath } = useGlobalContext();
 
   useEffect(() => {
-    setPage(window.location.pathname);
+    setPagePath(window.location.pathname);
   }, [])
   
   return (

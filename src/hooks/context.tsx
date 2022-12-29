@@ -7,23 +7,23 @@ interface Children {
 interface GlobalContent {
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  page: string;
-  setPage: React.Dispatch<React.SetStateAction<string>>;
+  pagePath: string;
+  setPagePath: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const AppContext = createContext<GlobalContent>({
   loading: true,
   setLoading: () => {},
-  page: "",
-  setPage: () => {},
+  pagePath: "",
+  setPagePath: () => {},
 });
 
 export const AppProvider: React.FC<Children> = ({ children }) => {
   const [loading, setLoading] = useState<boolean>(true);
-  const [page, setPage] = useState<string>("");
+  const [pagePath, setPagePath] = useState<string>("");
 
   return (
-    <AppContext.Provider value={{ loading, setLoading, page, setPage }}>
+    <AppContext.Provider value={{ loading, setLoading, pagePath, setPagePath }}>
       {children}
     </AppContext.Provider>
   );

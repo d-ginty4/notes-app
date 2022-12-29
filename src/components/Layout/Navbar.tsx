@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { navItems as Items } from "../../data/nav-items";
+import { useGlobalContext } from "../../hooks/context";
 
 interface Props {
   isSidebarOpen: boolean;
@@ -13,6 +14,9 @@ export const Navbar: React.FC<Props> = ({
   isSidebarOpen,
   setIsSidebarOpen,
 }) => {
+  //Hooks
+  const { pagePath } = useGlobalContext();
+
   // Click events
   const openSidebar = () => {
     setIsSidebarOpen(true);
@@ -24,9 +28,9 @@ export const Navbar: React.FC<Props> = ({
         <div className="navbar-start">
           <div className="navbar-item has-dropdown is-hoverable">
             <span className="navbar-link">
-              {Items.map((item, index) => {
+              {Items.map((item) => {
                 const { path, page, icon } = item;
-                if (path === window.location.pathname) {
+                if (path === pagePath) {
                   return (
                     <>
                       <FontAwesomeIcon className="mr-3" icon={icon} /> {page}
@@ -41,16 +45,17 @@ export const Navbar: React.FC<Props> = ({
             <div className="navbar-dropdown has-background-info-light">
               {Items.map((item, index) => {
                 const { path, page, icon } = item;
-                if (path !== window.location.pathname) {
-                return (
-                  <>
-                    <Link to={path} className={"navbar-item is-size-4"}>
-                      <FontAwesomeIcon className="mr-3" icon={icon} />
-                      {page}
-                    </Link>
-                    <hr className="dropdown-divider" />
-                  </>
-                );
+                if (path !== pagePath) {
+                  return (
+                    <>
+                      <Link to={path} className="navbar-item is-size-4 p-4">
+                        <FontAwesomeIcon className="mr-3" icon={icon} />
+                        {page}
+                      </Link>
+                    </>
+                  );
+                } else {
+                  return ''
                 }
               })}
             </div>

@@ -14,10 +14,10 @@ const Projects: React.FC = () => {
   const [openNoteForm, setOpenNoteForm] = useState<boolean>(false);
   const [openJobForm, setOpenJobForm] = useState<boolean>(false);
   const [openProjectForm, setOpenProjectForm] = useState<boolean>(false);
-  const { setPage } = useGlobalContext();
+  const { setPagePath } = useGlobalContext();
 
   useEffect(() => {
-    setPage(window.location.pathname);
+    setPagePath(window.location.pathname);
   }, []);
 
   // Click events
