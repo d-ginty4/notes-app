@@ -1,10 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUser,
-} from "@fortawesome/free-solid-svg-icons";
-import { useGlobalContext } from "../../hooks/context";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { navItems as Items } from "../../data/nav-items";
 
 interface Props {
@@ -16,8 +13,6 @@ export const Navbar: React.FC<Props> = ({
   isSidebarOpen,
   setIsSidebarOpen,
 }) => {
-  const { page } = useGlobalContext();
-
   // Click events
   const openSidebar = () => {
     setIsSidebarOpen(true);
@@ -29,36 +24,35 @@ export const Navbar: React.FC<Props> = ({
         <div className="navbar-start">
           <div className="navbar-item has-dropdown is-hoverable">
             <span className="navbar-link">
-              {/* <FontAwesomeIcon className="mr-3" icon={faHouse} /> */}
-              {page === "/"
-                ? "Home"
-                : page.substring(1).charAt(0).toUpperCase() + page.substring(2)}
+              {Items.map((item, index) => {
+                const { path, page, icon } = item;
+                if (path === window.location.pathname) {
+                  return (
+                    <>
+                      <FontAwesomeIcon className="mr-3" icon={icon} /> {page}
+                    </>
+                  );
+                } else {
+                  return "";
+                }
+              })}
             </span>
 
             <div className="navbar-dropdown has-background-info-light">
               {Items.map((item, index) => {
-                const { path, page, icon} = item;
+                const { path, page, icon } = item;
+                if (path !== window.location.pathname) {
                 return (
-                  <Link to={path} className="navbar-item is-size-5">
-                    <FontAwesomeIcon className="mr-3" icon={icon} />
-                    {page}
-                  </Link>
+                  <>
+                    <Link to={path} className={"navbar-item is-size-4"}>
+                      <FontAwesomeIcon className="mr-3" icon={icon} />
+                      {page}
+                    </Link>
+                    <hr className="dropdown-divider" />
+                  </>
                 );
+                }
               })}
-              {/* <Link to="/" className="navbar-item is-size-5">
-                <FontAwesomeIcon className="mr-3" icon={faHouse} />
-                Home
-              </Link>
-              <hr className="dropdown-divider" />
-              <Link to="/calendar" className="navbar-item is-size-5">
-                <FontAwesomeIcon className="mr-3" icon={faCalendarAlt} />
-                Calender
-              </Link>
-              <hr className="dropdown-divider" />
-              <Link to="/projects" className="navbar-item is-size-5">
-                <FontAwesomeIcon className="mr-3" icon={faProjectDiagram} />
-                Projects
-              </Link> */}
             </div>
           </div>
         </div>

@@ -7,6 +7,8 @@ export const NotesList:React.FC = () => {
       <Note/>
       <Note/>
       <Note/>
+      <Note/>
+      <Note/>
     </div>
   )
 }
