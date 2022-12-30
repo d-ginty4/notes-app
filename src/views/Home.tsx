@@ -5,6 +5,7 @@ import { NotesList } from "../components/Home/NotesList";
 import { useEffect, useState } from "react";
 import { NoteForm } from "../components/General/NoteForm";
 import { useGlobalContext } from "../hooks/context";
+import { notes } from "../data/notes";
 
 const Home: React.FC = () => {
   // Hooks
@@ -37,7 +38,7 @@ const Home: React.FC = () => {
           <FontAwesomeIcon icon={faPlus} className="mr-2" /> Create new quick
           note
         </button>
-        <NotesList />
+        <NotesList notes={notes}/>
       </section>
 
       <NoteForm openNoteForm={openNoteForm} setOpenNoteForm={setOpenNoteForm} />

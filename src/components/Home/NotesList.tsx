@@ -1,14 +1,17 @@
-import React from 'react'
-import { Note } from '../General/Note'
+import React from "react";
+import { Note } from "../../models/models";
+import { NoteItem } from "../General/NoteItem";
 
-export const NotesList:React.FC = () => {
+interface Props {
+  notes: Note[];
+}
+
+export const NotesList: React.FC<Props> = ({ notes }) => {
   return (
     <div className="notes">
-      <Note/>
-      <Note/>
-      <Note/>
-      <Note/>
-      <Note/>
+      {notes.map((note) => {
+        return <NoteItem note={note} />;
+      })}
     </div>
-  )
-}
+  );
+};

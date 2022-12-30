@@ -1,13 +1,6 @@
 import React from "react";
-import { Note } from "../General/Note";
+//import { NoteItem } from "../General/NoteItem";
 
 export const ProjectNotesList: React.FC = () => {
-  return (
-    <div className="notes" id="notesSection">
-      <Note />
-      <Note />
-      <Note />
-      <Note />
-    </div>
-  );
+  return <div className="notes" id="notesSection"></div>;
 };

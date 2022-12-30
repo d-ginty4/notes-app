@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { navItems as Items } from "../../data/nav-items";
+import { navItems as items } from "../../data/nav-items";
 import { useGlobalContext } from "../../hooks/context";
 
 interface Props {
@@ -28,7 +28,7 @@ export const Navbar: React.FC<Props> = ({
         <div className="navbar-start">
           <div className="navbar-item has-dropdown is-hoverable">
             <span className="navbar-link">
-              {Items.map((item) => {
+              {items.map((item) => {
                 const { path, page, icon } = item;
                 if (path === pagePath) {
                   return (
@@ -43,7 +43,7 @@ export const Navbar: React.FC<Props> = ({
             </span>
 
             <div className="navbar-dropdown has-background-info-light">
-              {Items.map((item, index) => {
+              {items.map((item, index) => {
                 const { path, page, icon } = item;
                 if (path !== pagePath) {
                   return (

@@ -1,8 +1,14 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { Note} from "../../models/models";
 
-export const Note: React.FC = () => {
+interface Props{
+  note: Note
+}
+
+export const NoteItem: React.FC<Props> = ({note}) => {
+  const {title, content} = note
   return (
     <div className="card">
       <div className="is-pulled-right">
@@ -36,12 +42,10 @@ export const Note: React.FC = () => {
         </div>
       </div>
 
-      <h1 className="title">Lorem, ipsum dolor.</h1>
+      <h1 className="title">{title}</h1>
       <div className="card-content">
         <div className="content is-size-4">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero culpa
-          harum architecto incidunt eligendi molestias provident quasi laborum
-          in perspiciatis.
+          {content}
         </div>
       </div>
     </div>
