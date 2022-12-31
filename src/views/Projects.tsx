@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faAngleDown } from "@fortawesome/free-solid-svg-icons";
-import { ProjectNotesList } from "../components/Projects/ProjectNotesList";
-import { ProjectJobsList } from "../components/Projects/Project-jobs/ProjectJobsList";
+import { ProjectJobsList } from "../components/Projects/ProjectJobsList";
 import { ProjectDetails } from "../components/Projects/ProjectDetails";
 import { NoteForm } from "../components/General/NoteForm";
 import { JobForm } from "../components/General/JobForm";
 import { ProjectForm } from "../components/General/ProjectForm";
 import { useGlobalContext } from "../hooks/context";
+import { NotesList } from "../components/General/NotesList";
+import { notes } from "../data/notes";
 
 const Projects: React.FC = () => {
   // Hooks
@@ -130,7 +131,7 @@ const Projects: React.FC = () => {
               </button>
             </div>
           </div>
-          <ProjectNotesList />
+          <NotesList notes={notes} />
           <NoteForm
             openNoteForm={openNoteForm}
             setOpenNoteForm={setOpenNoteForm}

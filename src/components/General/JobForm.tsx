@@ -18,7 +18,10 @@ export const JobForm: React.FC<Props> = ({ openJobForm, setOpenJobForm }) => {
           : "sideForm has-text-centered container p-3 mt-6"
       }`}
     >
-      <span className="delete is-large close-btn" onClick={closeForm}></span>
+      <span
+        className="delete is-large is-pulled-left"
+        onClick={closeForm}
+      ></span>
       <h1 className="has-text-weight-bold is-underlined is-size-2">New Job</h1>
 
       <div className="field">

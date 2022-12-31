@@ -6,7 +6,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
-import { useGlobalContext } from "../../hooks/context";
 
 interface Props {
   isSidebarOpen: boolean;
@@ -31,7 +30,7 @@ export const Sidebar: React.FC<Props> = ({
       }`}
     >
       <span
-        className="delete is-large mt-3 ml-3 sideNav_close-btn"
+        className="delete is-large mt-3 ml-3 is-pulled-left"
         onClick={closeSidebar}
       >
         <FontAwesomeIcon icon={faTimes} />

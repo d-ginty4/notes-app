@@ -4,7 +4,7 @@ import { ProjectJobsListItem } from "./ProjectJobsListItem";
 export const ProjectJobsList: React.FC = () => {
   return (
     <div className="jobs">
-      <table className="table is-striped is-size-4">
+      <table className="table is-striped is-size-4 has-text-centered">
         <thead>
           <tr>
             <th style={{ width: "15%" }}>Title</th>

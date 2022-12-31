@@ -1,6 +1,6 @@
 import React from "react";
 import { Note } from "../../models/models";
-import { NoteItem } from "../General/NoteItem";
+import { NoteItem } from "./NoteItem";
 
 interface Props {
   notes: Note[];

@@ -19,7 +19,7 @@ export const NoteItem: React.FC<Props> = ({note}) => {
             </span>
           </div>
           <div className="dropdown-menu">
-            <div className="dropdown-content" id="message">
+            <div className="dropdown-content message">
               <div className="dropdown-item is-size-4 has-text-weight-bold">
                 Edit note
               </div>
@@ -33,7 +33,7 @@ export const NoteItem: React.FC<Props> = ({note}) => {
             </span>
           </div>
           <div className="dropdown-menu">
-            <div className="dropdown-content" id="message">
+            <div className="dropdown-content message">
               <div className="dropdown-item is-size-4 has-text-weight-bold">
                 Delete note
               </div>
@@ -44,9 +44,7 @@ export const NoteItem: React.FC<Props> = ({note}) => {
 
       <h1 className="title">{title}</h1>
       <div className="card-content">
-        <div className="content is-size-4">
-          {content}
-        </div>
+        <div className="content is-size-4">{content}</div>
       </div>
     </div>
   );

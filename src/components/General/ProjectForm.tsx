@@ -5,10 +5,13 @@ interface Props {
   setOpenProjectForm: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const ProjectForm: React.FC<Props> = ({openProjectForm, setOpenProjectForm}) => {
+export const ProjectForm: React.FC<Props> = ({
+  openProjectForm,
+  setOpenProjectForm,
+}) => {
   const closeForm = () => {
-    setOpenProjectForm(false)
-  }
+    setOpenProjectForm(false);
+  };
 
   return (
     <div
@@ -18,7 +21,10 @@ export const ProjectForm: React.FC<Props> = ({openProjectForm, setOpenProjectFor
           : "sideForm has-text-centered container p-3 mt-6"
       }`}
     >
-      <span className="delete is-large close-btn" onClick={closeForm}></span>
+      <span
+        className="delete is-large is-pulled-left"
+        onClick={closeForm}
+      ></span>
       <h1 className="has-text-weight-bold is-underlined is-size-2">
         New Project
       </h1>

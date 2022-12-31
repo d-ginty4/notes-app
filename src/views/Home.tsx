@@ -1,7 +1,7 @@
 import { ProjectList } from "../components/Home/ProjectList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { NotesList } from "../components/Home/NotesList";
+import { NotesList } from "../components/General/NotesList";
 import { useEffect, useState } from "react";
 import { NoteForm } from "../components/General/NoteForm";
 import { useGlobalContext } from "../hooks/context";
@@ -38,7 +38,7 @@ const Home: React.FC = () => {
           <FontAwesomeIcon icon={faPlus} className="mr-2" /> Create new quick
           note
         </button>
-        <NotesList notes={notes}/>
+        <NotesList notes={notes} />
       </section>
 
       <NoteForm openNoteForm={openNoteForm} setOpenNoteForm={setOpenNoteForm} />

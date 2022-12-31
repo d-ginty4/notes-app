@@ -15,7 +15,7 @@ export const ProjectDetails: React.FC = () => {
               </span>
             </div>
             <div className="dropdown-menu">
-              <div className="dropdown-content" id="message">
+              <div className="dropdown-content message">
                 <div className="dropdown-item is-size-5 has-text-weight-bold">
                   Edit Project Details
                 </div>
@@ -29,7 +29,7 @@ export const ProjectDetails: React.FC = () => {
               </span>
             </div>
             <div className="dropdown-menu">
-              <div className="dropdown-content" id="message">
+              <div className="dropdown-content message">
                 <div className="dropdown-item is-size-5 has-text-weight-bold">
                   Delete Project
                 </div>

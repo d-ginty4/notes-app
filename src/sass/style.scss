@@ -2,7 +2,6 @@
 @import "layout";
 @import "home";
 @import "projects";
-@import "calendar";
 @import "loading";
 @import "error";
 
@@ -31,19 +30,6 @@ main {
 .blur{
   filter: blur(3px);
   pointer-events: none;
-}
-
-.my-button{
-  display: block;
-  margin: 20px auto;
-}
-
-.heading{
-  font-size: 100px;
-}
-
-.close-btn{
-  float: left;
 }
 
 .move{
@@ -105,75 +91,16 @@ main {
   padding-bottom: 30px;
 }
 
-.jobContainer{
-  background: $dark;
-  height: auto;
-  width: 25vw;
-  display: flex;
-  flex-direction: column;
-  align-self: stretch;
-  align-items: center;
-  justify-content: center;
-
-  .job-title{
-    color: $primary;
-    position: absolute;
-    top: 0;
-  }
-
-  .jobs{
-    width: calc(100% - 0.75rem * 2);
-    height: 350px;
-    overflow-y: scroll;
-
-    dt{
-      font-size: x-large;
-    }
-
-    dt span.icon{
-      font-size: medium;
-    }
-
-    dd{
-      font-size: large;
-    }
-  }
-
-  .button{
-    position: absolute;
-    font-size: x-large;
-    padding: 0 10px;
-    bottom: 0;
-  }
-}
-
 .dropdown-item{
   font-size: large;
 }
 
-#message{
+.message{
   background: $primary;
   width: fit-content;
   height: fit-content;
   padding: 0;
   margin-bottom: 10px;
-}
-
-#edit-note:hover, #delete-note:hover{
-  cursor: pointer;
-  font-size: x-large;
-}
-
-.calendar-icon {
-  height: 1rem;
-  
-  .dropdown-trigger:hover{
-    #edit-note, #delete-note{
-      cursor: pointer;
-      font-size: large;
-      color: $primary;
-    }
-  }
 }
 
 .layout {
@@ -192,12 +119,4 @@ main {
 .jobs{
   width: 95%;
   margin: auto;
-}
-
-table{
-  text-align: center;
-
-  .#{&}-title, .#{&}-dueDate{
-      white-space: nowrap;
-  }
 }

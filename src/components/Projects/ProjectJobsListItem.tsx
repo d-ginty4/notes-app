@@ -20,7 +20,7 @@ export const ProjectJobsListItem: React.FC = () => {
             </span>
           </div>
           <div className="dropdown-menu">
-            <div className="dropdown-content" id="message">
+            <div className="dropdown-content message">
               <div className="dropdown-item is-size-4 has-text-weight-bold">
                 Edit Job
               </div>
@@ -36,7 +36,7 @@ export const ProjectJobsListItem: React.FC = () => {
             </span>
           </div>
           <div className="dropdown-menu">
-            <div className="dropdown-content" id="message">
+            <div className="dropdown-content message">
               <div className="dropdown-item is-size-4 has-text-weight-bold">
                 Delete Job
               </div>

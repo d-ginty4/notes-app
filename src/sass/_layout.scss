@@ -13,10 +13,6 @@
     #{&}_user-icon {
         font-size: 25vh;
     }
-
-    #{&}_close-btn{
-        float: left;
-    }
 }
 
 // Show the sidebar
@@ -26,15 +22,6 @@
 
 .sidebar-button {
     transition: transform 0.5s ease;
-}
-
-.move{
-    transform: translateX(100%);
-}
-
-.blur{
-    filter: blur(3px);
-    pointer-events: none;
 }
 
 
