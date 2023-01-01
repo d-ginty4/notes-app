@@ -15,16 +15,17 @@ export const Navbar: React.FC<Props> = ({
   setIsSidebarOpen,
 }) => {
   //Hooks
-  const { pagePath } = useGlobalContext();
-
+  const { pagePath, navbar, main } = useGlobalContext();
+  
   // Click events
   const openSidebar = () => {
     setIsSidebarOpen(true);
+    main?.current?.classList.toggle("blur");
   };
 
   return (
-    <>
-      <nav className="navbar is-fixed-top is-size-4 has-text-weight-bold has-background-primary ">
+    <div ref={navbar}>
+      <nav className="navbar is-fixed-top is-size-4 has-text-weight-bold has-background-primary">
         <div className="navbar-start">
           <div className="navbar-item has-dropdown is-hoverable">
             <span className="navbar-link">
@@ -75,6 +76,6 @@ export const Navbar: React.FC<Props> = ({
           </a>
         </div>
       </nav>
-    </>
+    </div>
   );
 };

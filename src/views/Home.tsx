@@ -10,15 +10,19 @@ import { notes } from "../data/notes";
 const Home: React.FC = () => {
   // Hooks
   const [openNoteForm, setOpenNoteForm] = useState<boolean>(false);
-  const { setPagePath } = useGlobalContext();
+  const { setPagePath, navbar, main } = useGlobalContext();
 
   useEffect(() => {
     setPagePath(window.location.pathname);
+    if (navbar?.current?.classList.contains("is-hidden")) {
+      navbar?.current?.classList.remove("is-hidden");
+    }
   }, []);
 
   // Click events
   const openNoteFormFunc = (): void => {
     setOpenNoteForm(true);
+    main?.current?.classList.toggle("blur");
   };
 
   return (
@@ -41,7 +45,7 @@ const Home: React.FC = () => {
         <NotesList notes={notes} />
       </section>
 
-      <NoteForm openNoteForm={openNoteForm} setOpenNoteForm={setOpenNoteForm} />
+      <NoteForm openNoteForm={openNoteForm} setOpenNoteForm={setOpenNoteForm}/>
     </>
   );
 };

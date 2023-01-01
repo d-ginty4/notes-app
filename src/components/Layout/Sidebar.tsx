@@ -6,6 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import { useGlobalContext } from "../../hooks/context";
 
 interface Props {
   isSidebarOpen: boolean;
@@ -16,9 +17,13 @@ export const Sidebar: React.FC<Props> = ({
   isSidebarOpen,
   setIsSidebarOpen,
 }) => {
+  // Hooks
+  const {main} = useGlobalContext()
+
   // Click events
   const closeSidebar = (): void => {
     setIsSidebarOpen(false);
+    main?.current?.classList.toggle("blur");
   };
 
   return (

@@ -14,10 +14,13 @@ const Projects: React.FC = () => {
   const [openNoteForm, setOpenNoteForm] = useState<boolean>(false);
   const [openJobForm, setOpenJobForm] = useState<boolean>(false);
   const [openProjectForm, setOpenProjectForm] = useState<boolean>(false);
-  const { setPagePath, main } = useGlobalContext();
+  const { setPagePath, main, navbar } = useGlobalContext();
 
   useEffect(() => {
     setPagePath(window.location.pathname);
+    if (navbar?.current?.classList.contains("is-hidden")) {
+      navbar?.current?.classList.remove("is-hidden");
+    }
   }, []);
 
   // Click events
@@ -65,11 +68,6 @@ const Projects: React.FC = () => {
           Create new Project
         </button>
       </section>
-      <ProjectForm
-        openProjectForm={openProjectForm}
-        setOpenProjectForm={setOpenProjectForm}
-      />
-
       <section className="section no-pad">
         <div className="content">
           <ProjectDetails />
@@ -99,20 +97,20 @@ const Projects: React.FC = () => {
               &emsp; Project Jobs
             </h2>
             <div className="vertical-center">
-              <button className="button has-text-weight-bold mr-6">
+              <button
+                className="button has-text-weight-bold mr-6"
+                onClick={openJobFormFunc}
+              >
                 <span className="icon-text">
                   <span className="icon">
                     <FontAwesomeIcon icon={faPlus} />
                   </span>
-                  <span className="is-size-4" onClick={openJobFormFunc}>
-                    Add New Job
-                  </span>
+                  <span className="is-size-4">Add New Job</span>
                 </span>
               </button>
             </div>
           </div>
           <ProjectJobsList />
-          <JobForm openJobForm={openJobForm} setOpenJobForm={setOpenJobForm} />
           <hr />
 
           {/* Project notes section */}
@@ -121,25 +119,30 @@ const Projects: React.FC = () => {
               &emsp; Project Notes
             </h2>
             <div className="vertical-center">
-              <button className="button has-text-weight-bold mr-6">
+              <button
+                className="button has-text-weight-bold mr-6"
+                onClick={openNoteFormFunc}
+              >
                 <span className="icon-text">
                   <span className="icon">
                     <FontAwesomeIcon icon={faPlus} />
                   </span>
-                  <span className="is-size-4" onClick={openNoteFormFunc}>
-                    Add New Note
-                  </span>
+                  <span className="is-size-4">Add New Note</span>
                 </span>
               </button>
             </div>
           </div>
           <NotesList notes={notes} />
-          <NoteForm
-            openNoteForm={openNoteForm}
-            setOpenNoteForm={setOpenNoteForm}
-          />
         </div>
       </section>
+
+      {/* Various forms */}
+      <ProjectForm
+        openProjectForm={openProjectForm}
+        setOpenProjectForm={setOpenProjectForm}
+      />
+      <NoteForm openNoteForm={openNoteForm} setOpenNoteForm={setOpenNoteForm} />
+      <JobForm openJobForm={openJobForm} setOpenJobForm={setOpenJobForm} />
     </>
   );
 };
