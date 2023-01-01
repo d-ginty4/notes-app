@@ -1,4 +1,5 @@
 import React from "react";
+import { useGlobalContext } from "../../hooks/context";
 
 interface Props {
   openJobForm: boolean;
@@ -6,8 +7,13 @@ interface Props {
 }
 
 export const JobForm: React.FC<Props> = ({ openJobForm, setOpenJobForm }) => {
+  //Hooks
+  const { main } = useGlobalContext();
+
+  // Click events
   const closeForm = (): void => {
     setOpenJobForm(false);
+    main?.current?.classList.toggle("blur");
   };
 
   return (

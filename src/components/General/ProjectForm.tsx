@@ -1,4 +1,5 @@
 import React from "react";
+import { useGlobalContext } from "../../hooks/context";
 
 interface Props {
   openProjectForm: boolean;
@@ -9,8 +10,13 @@ export const ProjectForm: React.FC<Props> = ({
   openProjectForm,
   setOpenProjectForm,
 }) => {
+  //Hooks
+  const {main} = useGlobalContext()
+
+  // Click events
   const closeForm = () => {
     setOpenProjectForm(false);
+    main?.current?.classList.toggle('blur')
   };
 
   return (

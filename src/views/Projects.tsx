@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { ProjectJobsList } from "../components/Projects/ProjectJobsList";
@@ -9,13 +9,12 @@ import { ProjectForm } from "../components/General/ProjectForm";
 import { useGlobalContext } from "../hooks/context";
 import { NotesList } from "../components/General/NotesList";
 import { notes } from "../data/notes";
-
 const Projects: React.FC = () => {
   // Hooks
   const [openNoteForm, setOpenNoteForm] = useState<boolean>(false);
   const [openJobForm, setOpenJobForm] = useState<boolean>(false);
   const [openProjectForm, setOpenProjectForm] = useState<boolean>(false);
-  const { setPagePath } = useGlobalContext();
+  const { setPagePath, main } = useGlobalContext();
 
   useEffect(() => {
     setPagePath(window.location.pathname);
@@ -24,14 +23,17 @@ const Projects: React.FC = () => {
   // Click events
   const openNoteFormFunc = (): void => {
     setOpenNoteForm(true);
+    main?.current?.classList.toggle("blur");
   };
 
   const openJobFormFunc = (): void => {
     setOpenJobForm(true);
+    main?.current?.classList.toggle("blur");
   };
 
   const openProjectFormFunc = (): void => {
     setOpenProjectForm(true);
+    main?.current?.classList.toggle('blur')
   };
 
   return (
@@ -62,11 +64,11 @@ const Projects: React.FC = () => {
           <FontAwesomeIcon icon={faPlus} />
           Create new Project
         </button>
-        <ProjectForm
-          openProjectForm={openProjectForm}
-          setOpenProjectForm={setOpenProjectForm}
-        />
       </section>
+      <ProjectForm
+        openProjectForm={openProjectForm}
+        setOpenProjectForm={setOpenProjectForm}
+      />
 
       <section className="section no-pad">
         <div className="content">

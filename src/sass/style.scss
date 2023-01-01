@@ -21,27 +21,29 @@ main {
 ::-webkit-scrollbar {
   width: 12px;
 }
- 
+
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: $primary;
 }
 
-.blur{
-  filter: blur(3px);
-  pointer-events: none;
+.blur {
+  section {
+    filter: blur(3px);
+    pointer-events: none;
+  }
 }
 
-.move{
+.move {
   transform: translateX(100%);
 }
 
-.button{
+.button {
   font-family: $font;
   background: $primary;
 }
 
-.sideForm{
+.sideForm {
   position: fixed;
   left: 30%;
   top: 100px;
@@ -51,51 +53,53 @@ main {
   background: $note;
   transform: translateX(-200%);
   transition: transform 1s ease;
+  filter: 0px;
+  pointer-events: all;
 
-  .label{
+  .label {
     float: left;
     margin-bottom: 0;
   }
 
-  .btn{
+  .btn {
     padding: 10px;
   }
 }
 
-.move-form{
+.move-form {
   transform: translateX(0%);
 }
 
-.card{
+.card {
   background: $note;
   width: 31%;
   margin: 1rem;
 }
 
-.notes{
+.notes {
   display: flex;
   flex-flow: row wrap;
 
-  .title{
+  .title {
     margin: 20px;
     margin-bottom: 0;
   }
 
-  .card-content{
+  .card-content {
     padding-top: 0;
   }
 }
 
-.no-pad{
+.no-pad {
   padding-top: 0;
   padding-bottom: 30px;
 }
 
-.dropdown-item{
+.dropdown-item {
   font-size: large;
 }
 
-.message{
+.message {
   background: $primary;
   width: fit-content;
   height: fit-content;
@@ -116,7 +120,7 @@ main {
   right: 0;
 }
 
-.jobs{
+.jobs {
   width: 95%;
   margin: auto;
 }

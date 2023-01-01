@@ -1,4 +1,5 @@
 import React from "react";
+import { useGlobalContext } from "../../hooks/context";
 
 interface Props {
   openNoteForm: boolean;
@@ -6,9 +7,14 @@ interface Props {
 }
 
 export const NoteForm: React.FC<Props> = ({openNoteForm, setOpenNoteForm}) => {
+  //Hooks
+  const { main } = useGlobalContext();
+  
+  // Click events
   const closeForm = (): void => {
-    setOpenNoteForm(false)
-  }
+    setOpenNoteForm(false);
+    main?.current?.classList.toggle("blur");
+  };
 
   return (
     <div
