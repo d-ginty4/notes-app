@@ -1,7 +1,12 @@
 import React from "react";
+import { Project } from "../../models/models";
 import { ProjectSummary } from "./ProjectSummary";
 
-export const ProjectList: React.FC = () => {
+interface Props{
+  projects: Project[]
+}
+
+export const ProjectList: React.FC<Props> = ({projects}) => {
   return (
     <>
       <div className="column is-half">
@@ -15,9 +20,9 @@ export const ProjectList: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            <ProjectSummary />
-            <ProjectSummary />
-            <ProjectSummary />
+            {projects.map((project) => {
+              return <ProjectSummary project={project}/>;
+            })}
           </tbody>
         </table>
       </div>
@@ -33,7 +38,7 @@ export const ProjectList: React.FC = () => {
               <th style={{ width: "40%" }}>Project Jobs</th>
             </tr>
           </thead>
-          <tbody id="calendarJobs"></tbody>
+          <tbody></tbody>
         </table>
       </div>
     </>

@@ -9,6 +9,6 @@ type navItem = {
 
 export const navItems: navItem[] = [
   { path: "/", page: "Home", icon: faHouse },
-  { path: "/projects", page: "Projects", icon: faProjectDiagram },
+  { path: "/project/:id", page: "Projects", icon: faProjectDiagram },
   // { path: "/calendar", page: "Calendar", icon: faCalendarAlt },
 ];

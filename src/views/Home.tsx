@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { NoteForm } from "../components/General/NoteForm";
 import { useGlobalContext } from "../hooks/context";
 import { notes } from "../data/notes";
+import { projects } from "../data/project";
 
 const Home: React.FC = () => {
   // Hooks
@@ -29,7 +30,7 @@ const Home: React.FC = () => {
     <>
       <section className="section no=pad">
         <div className="columns">
-          <ProjectList />
+          <ProjectList projects={projects}/>
         </div>
       </section>
 

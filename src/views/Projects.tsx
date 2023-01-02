@@ -9,8 +9,14 @@ import { ProjectForm } from "../components/General/ProjectForm";
 import { useGlobalContext } from "../hooks/context";
 import { NotesList } from "../components/General/NotesList";
 import { notes } from "../data/notes";
+import { Link, useParams } from "react-router-dom";
+import { Project } from "../models/models";
+import { projects } from "../data/project";
+
 const Projects: React.FC = () => {
   // Hooks
+  const { id } = useParams<string>();
+  const [project, setProject] = useState<Project>({ id: 0, title: "" });
   const [openNoteForm, setOpenNoteForm] = useState<boolean>(false);
   const [openJobForm, setOpenJobForm] = useState<boolean>(false);
   const [openProjectForm, setOpenProjectForm] = useState<boolean>(false);
@@ -22,6 +28,15 @@ const Projects: React.FC = () => {
       navbar?.current?.classList.remove("is-hidden");
     }
   }, []);
+
+  useEffect(()=> {
+    switch (typeof id){
+      case 'string':
+        const current = projects.find(project => project.id === parseInt(id)) || project
+        setProject(current);
+      break;
+    }
+  }, [id])
 
   // Click events
   const openNoteFormFunc = (): void => {
@@ -45,17 +60,37 @@ const Projects: React.FC = () => {
         <div className="dropdown is-hoverable">
           <div className="dropdown-trigger">
             <button className="button has-text-weight-bold is-size-4">
-              <span>Project name</span>
+              <span className="mr-3">{project.title}</span>
               <FontAwesomeIcon icon={faAngleDown} />
             </button>
           </div>
           <div className="dropdown-menu">
             <div className="dropdown-content has-background-info-light">
-              <span className="dropdown-item">Item 1</span>
-              <hr className="dropdown-divider"></hr>
-              <span className="dropdown-item">Item 2</span>
-              <hr className="dropdown-divider"></hr>
-              <span className="dropdown-item">Item 3</span>
+              {projects.map((project, index) => {
+
+                switch (typeof id){
+                  case 'string':
+                    if (project.id === parseInt(id)){
+                      return ''
+                    }
+                }
+                return (
+                  <>
+                    <Link
+                      to={`/project/${project.id}`}
+                      className="dropdown-item is-size-4"
+                    >
+                      {project.title}
+                    </Link>
+                    {index === projects.length - 1 ? (
+                      ""
+                    ) : (
+                      <hr className="dropdown-divider"></hr>
+                    )}
+                  </>
+                );
+              })}
+              {/* <hr className="dropdown-divider"></hr> */}
             </div>
           </div>
         </div>
@@ -70,7 +105,7 @@ const Projects: React.FC = () => {
       </section>
       <section className="section no-pad">
         <div className="content">
-          <ProjectDetails />
+          <ProjectDetails project={project}/>
           <hr />
 
           {/* Attachments Section

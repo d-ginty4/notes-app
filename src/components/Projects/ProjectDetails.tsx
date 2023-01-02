@@ -1,12 +1,19 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { Project } from "../../models/models";
 
-export const ProjectDetails: React.FC = () => {
+interface Props{
+  project: Project
+}
+
+export const ProjectDetails: React.FC<Props> = ({project}) => {
+  const {title, description} = project
+
   return (
     <div>
       <h1 className="title has-text-centered is-size-2">
-        Name
+        {title}
         <div className="project-icons is-pulled-right">
           <div className="dropdown is-hoverable">
             <div className="dropdown-trigger">
@@ -40,12 +47,7 @@ export const ProjectDetails: React.FC = () => {
       </h1>
       <h2 className="subtitle has-text-weight-normal mb-1">Due: 08-12-1999</h2>
       <p className="is-size-4">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum error
-        delectus sint quasi nemo illo at excepturi. Hic tempore incidunt
-        accusantium repellendus natus voluptate, ut aliquam pariatur eius,
-        nostrum sapiente corrupti neque consectetur, obcaecati minus atque
-        facilis. Dolorum nostrum inventore sunt, fugiat aliquam sequi omnis
-        reiciendis necessitatibus praesentium a? Earum!
+        {description}
       </p>
     </div>
   );

@@ -26,6 +26,6 @@ export interface Project{
     title: string
     dueDate?: number
     description?: string
-    Jobs: Job[]
-    Notes: Note[]
+    Jobs?: Job[]
+    Notes?: Note[]
 }
