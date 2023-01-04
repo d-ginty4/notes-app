@@ -11,10 +11,10 @@ import { projects } from "../data/project";
 const Home: React.FC = () => {
   // Hooks
   const [openNoteForm, setOpenNoteForm] = useState<boolean>(false);
-  const { setPagePath, navbar, main } = useGlobalContext();
+  const { setPageName, navbar, main } = useGlobalContext();
 
   useEffect(() => {
-    setPagePath(window.location.pathname);
+    setPageName("home");
     if (navbar?.current?.classList.contains("is-hidden")) {
       navbar?.current?.classList.remove("is-hidden");
     }

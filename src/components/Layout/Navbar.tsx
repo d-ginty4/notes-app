@@ -2,8 +2,10 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { navItems as items } from "../../data/nav-items";
+import { navItem, navItems } from "../../data/nav-items";
 import { useGlobalContext } from "../../hooks/context";
+import { useEffect, useState } from "react";
+import { projects } from "../../data/project";
 
 interface Props {
   isSidebarOpen: boolean;
@@ -15,8 +17,23 @@ export const Navbar: React.FC<Props> = ({
   setIsSidebarOpen,
 }) => {
   //Hooks
-  const { pagePath, navbar, main } = useGlobalContext();
-  
+  const { pageName, navbar, main } = useGlobalContext();
+  const [items, setItems] = useState<navItem[]>(navItems);
+  const [activeItem, setActiveItem] = useState<navItem>(navItems[0]);
+
+  useEffect(() => {
+    setActiveItem(
+      items.find((item) => {
+        return item.page === pageName}
+      ) || {
+        path: "/error",
+        page: "error",
+        icon: faUser
+      }
+    );
+    setItems(navItems.filter((item) => item.page !== activeItem.page));
+  }, [pageName]);
+
   // Click events
   const openSidebar = () => {
     setIsSidebarOpen(true);
@@ -29,35 +46,36 @@ export const Navbar: React.FC<Props> = ({
         <div className="navbar-start">
           <div className="navbar-item has-dropdown is-hoverable">
             <span className="navbar-link">
-              {items.map((item) => {
-                const { path, page, icon } = item;
-                if (path === pagePath) {
-                  return (
-                    <>
-                      <FontAwesomeIcon className="mr-3" icon={icon} /> {page}
-                    </>
-                  );
-                } else {
-                  return "";
-                }
-              })}
+              <>
+                <FontAwesomeIcon className="mr-3" icon={activeItem.icon} />{" "}
+                {activeItem.page.charAt(0).toUpperCase() +
+                  activeItem.page.slice(1)}
+              </>
             </span>
 
             <div className="navbar-dropdown has-background-info-light">
               {items.map((item, index) => {
                 const { path, page, icon } = item;
-                if (path !== pagePath) {
-                  return (
-                    <>
-                      <Link to={path} className="navbar-item is-size-4 p-4">
-                        <FontAwesomeIcon className="mr-3" icon={icon} />
-                        {page}
-                      </Link>
-                    </>
-                  );
-                } else {
-                  return ''
-                }
+                return (
+                  <>
+                    <Link
+                      to={
+                        path === "/project"
+                          ? "/project/" + projects[0].id
+                          : path
+                      }
+                      className="navbar-item is-size-4 p-4"
+                    >
+                      <FontAwesomeIcon className="mr-3" icon={icon} />
+                      {page.charAt(0).toUpperCase() + page.slice(1)}
+                    </Link>
+                    {index === items.length - 1 ? (
+                      ""
+                    ) : (
+                      <hr className="dropdown-divider"></hr>
+                    )}
+                  </>
+                );
               })}
             </div>
           </div>

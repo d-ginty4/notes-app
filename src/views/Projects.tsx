@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { ProjectJobsList } from "../components/Projects/ProjectJobsList";
@@ -20,10 +20,10 @@ const Projects: React.FC = () => {
   const [openNoteForm, setOpenNoteForm] = useState<boolean>(false);
   const [openJobForm, setOpenJobForm] = useState<boolean>(false);
   const [openProjectForm, setOpenProjectForm] = useState<boolean>(false);
-  const { setPagePath, main, navbar } = useGlobalContext();
+  const { setPageName, main, navbar } = useGlobalContext();
 
   useEffect(() => {
-    setPagePath(window.location.pathname);
+    setPageName("project");
     if (navbar?.current?.classList.contains("is-hidden")) {
       navbar?.current?.classList.remove("is-hidden");
     }
@@ -90,7 +90,6 @@ const Projects: React.FC = () => {
                   </>
                 );
               })}
-              {/* <hr className="dropdown-divider"></hr> */}
             </div>
           </div>
         </div>
