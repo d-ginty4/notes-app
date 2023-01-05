@@ -56,6 +56,7 @@ const Projects: React.FC = () => {
 
   return (
     <>
+      <Link to={"/"}>Click</Link>
       <section className="section no-pad my-5 pb-0">
         <div className="dropdown is-hoverable">
           <div className="dropdown-trigger">

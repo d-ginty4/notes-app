@@ -6,6 +6,7 @@ import { navItem, navItems } from "../../data/nav-items";
 import { useGlobalContext } from "../../hooks/context";
 import { useEffect, useState } from "react";
 import { projects } from "../../data/project";
+import { it } from "node:test";
 
 interface Props {
   isSidebarOpen: boolean;
@@ -22,17 +23,32 @@ export const Navbar: React.FC<Props> = ({
   const [activeItem, setActiveItem] = useState<navItem>(navItems[0]);
 
   useEffect(() => {
+    setNav();
+  }, []);
+
+  useEffect(() => {
+    setNav()
+  }, [pageName]);
+
+  function setNav(){
+    console.clear();
     setActiveItem(
-      items.find((item) => {
-        return item.page === pageName}
-      ) || {
+      items.find((item) => item.page === pageName) || {
         path: "/error",
         page: "error",
-        icon: faUser
+        icon: faUser,
       }
     );
-    setItems(navItems.filter((item) => item.page !== activeItem.page));
-  }, [pageName]);
+    console.log("Active item");
+    console.log(activeItem);
+    setItems(
+      navItems.filter((item) => {
+        return item.page !== activeItem.page;
+      })
+    );
+    console.log("Items: ");
+    items.forEach((item) => console.log(item));
+  }
 
   // Click events
   const openSidebar = () => {
