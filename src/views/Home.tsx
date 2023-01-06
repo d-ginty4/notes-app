@@ -5,13 +5,16 @@ import { NotesList } from "../components/General/NotesList";
 import { useEffect, useState } from "react";
 import { NoteForm } from "../components/General/NoteForm";
 import { useGlobalContext } from "../hooks/context";
-import { notes } from "../data/notes";
-import { projects } from "../data/project";
+import { notes as notesList} from "../data/notes";
+import { projects as projectList} from "../data/project";
+import { Note, Project } from "../models/models";
 
 const Home: React.FC = () => {
   // Hooks
   const [openNoteForm, setOpenNoteForm] = useState<boolean>(false);
   const { setPageName, navbar, main } = useGlobalContext();
+  const [notes, setNotes] = useState<Note[]>(notesList);
+  const [projects, setProjects] = useState<Project[]>(projectList);
 
   useEffect(() => {
     setPageName("home");

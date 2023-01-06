@@ -5,8 +5,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { navItem, navItems } from "../../data/nav-items";
 import { useGlobalContext } from "../../hooks/context";
 import { useEffect, useState } from "react";
-import { projects } from "../../data/project";
-import { it } from "node:test";
+import { projects} from "../../data/project";
 
 interface Props {
   isSidebarOpen: boolean;
@@ -22,23 +21,28 @@ export const Navbar: React.FC<Props> = ({
   const [items, setItems] = useState<navItem[]>(navItems);
   const [activeItem, setActiveItem] = useState<navItem>(navItems[0]);
 
+  // useEffect(() => {
+  //   setNav();
+  // }, []);
+
   useEffect(() => {
     setNav();
-  }, []);
-
-  useEffect(() => {
-    setNav()
   }, [pageName]);
 
-  function setNav(){
-    console.clear();
-    setActiveItem(
-      items.find((item) => item.page === pageName) || {
-        path: "/error",
-        page: "error",
-        icon: faUser,
-      }
-    );
+  function setNav() {
+    //console.clear();
+    // const temp = items.find((item) => item.page === pageName);
+    // switch(typeof temp){
+    //   case "undefined":
+    //     setActiveItem({
+    //       id: 0,
+    //       page:"error",
+    //       path: "/error",
+    //       icon: faUser
+    //     })
+    //     break
+    //   default: setActiveItem(temp)
+    // }
     console.log("Active item");
     console.log(activeItem);
     setItems(
@@ -46,8 +50,8 @@ export const Navbar: React.FC<Props> = ({
         return item.page !== activeItem.page;
       })
     );
-    console.log("Items: ");
-    items.forEach((item) => console.log(item));
+    // console.log("Items: ");
+    // items.forEach((item) => console.log(item));
   }
 
   // Click events
@@ -73,7 +77,7 @@ export const Navbar: React.FC<Props> = ({
               {items.map((item, index) => {
                 const { path, page, icon } = item;
                 return (
-                  <>
+                  <span key={item.id}>
                     <Link
                       to={
                         path === "/project"
@@ -90,7 +94,7 @@ export const Navbar: React.FC<Props> = ({
                     ) : (
                       <hr className="dropdown-divider"></hr>
                     )}
-                  </>
+                  </span>
                 );
               })}
             </div>

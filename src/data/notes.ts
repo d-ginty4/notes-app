@@ -7,7 +7,7 @@ export const notes: Note[] = [
     content: "dfghnfdg",
   },
   {
-    id: 1,
+    id: 2,
     title: "Second Title",
     content: "szdvszjkvdjxhvb hjkv bhjkb xhjkv b ,x  h bsildhbvczxn cjkhb",
   },

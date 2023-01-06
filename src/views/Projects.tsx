@@ -8,18 +8,21 @@ import { JobForm } from "../components/General/JobForm";
 import { ProjectForm } from "../components/General/ProjectForm";
 import { useGlobalContext } from "../hooks/context";
 import { NotesList } from "../components/General/NotesList";
-import { notes } from "../data/notes";
+import { notes as notesList} from "../data/notes";
 import { Link, useParams } from "react-router-dom";
-import { Project } from "../models/models";
-import { projects } from "../data/project";
+import { Note, Project } from "../models/models";
+import { projects as projectList } from "../data/project";
 
 const Projects: React.FC = () => {
   // Hooks
   const { id } = useParams<string>();
   const [project, setProject] = useState<Project>({ id: 0, title: "" });
+  const [notes, setNotes] = useState<Note[]>(notesList)
+  const [projects, setProjects] = useState<Project[]>(projectList)
   const [openNoteForm, setOpenNoteForm] = useState<boolean>(false);
   const [openJobForm, setOpenJobForm] = useState<boolean>(false);
   const [openProjectForm, setOpenProjectForm] = useState<boolean>(false);
+
   const { setPageName, main, navbar } = useGlobalContext();
 
   useEffect(() => {
@@ -68,11 +71,10 @@ const Projects: React.FC = () => {
           <div className="dropdown-menu">
             <div className="dropdown-content has-background-info-light">
               {projects.map((project, index) => {
-
-                switch (typeof id){
-                  case 'string':
-                    if (project.id === parseInt(id)){
-                      return ''
+                switch (typeof id) {
+                  case "string":
+                    if (project.id === parseInt(id)) {
+                      return "";
                     }
                 }
                 return (
@@ -100,12 +102,12 @@ const Projects: React.FC = () => {
           onClick={openProjectFormFunc}
         >
           <FontAwesomeIcon icon={faPlus} />
-          Create new Project
+          <span className="ml-3">Create new Project</span>
         </button>
       </section>
       <section className="section no-pad">
         <div className="content">
-          <ProjectDetails project={project}/>
+          <ProjectDetails project={project} />
           <hr />
 
           {/* Attachments Section

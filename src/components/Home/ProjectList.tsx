@@ -21,7 +21,7 @@ export const ProjectList: React.FC<Props> = ({projects}) => {
           </thead>
           <tbody>
             {projects.map((project) => {
-              return <ProjectSummary project={project}/>;
+              return <ProjectSummary key={project.id} project={project}/>;
             })}
           </tbody>
         </table>
