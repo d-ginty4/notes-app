@@ -11,14 +11,16 @@ import { NotesList } from "../components/General/NotesList";
 import { notes as notesList} from "../data/notes";
 import { Link, useParams } from "react-router-dom";
 import { Note, Project } from "../models/models";
-import { projects as projectList } from "../data/project";
+import { projects as projectFile } from "../data/project";
+import { ProjectDropdown } from "../components/Projects/ProjectDropdown";
 
 const Projects: React.FC = () => {
   // Hooks
   const { id } = useParams<string>();
   const [project, setProject] = useState<Project>({ id: 0, title: "" });
   const [notes, setNotes] = useState<Note[]>(notesList)
-  const [projects, setProjects] = useState<Project[]>(projectList)
+  const [projects, setProjects] = useState<Project[]>(projectFile)
+  const [projectList, setProjectList] = useState<Project[]>(projectFile)
   const [openNoteForm, setOpenNoteForm] = useState<boolean>(false);
   const [openJobForm, setOpenJobForm] = useState<boolean>(false);
   const [openProjectForm, setOpenProjectForm] = useState<boolean>(false);
@@ -61,41 +63,7 @@ const Projects: React.FC = () => {
     <>
       <Link to={"/"}>Click</Link>
       <section className="section no-pad my-5 pb-0">
-        <div className="dropdown is-hoverable">
-          <div className="dropdown-trigger">
-            <button className="button has-text-weight-bold is-size-4">
-              <span className="mr-3">{project.title}</span>
-              <FontAwesomeIcon icon={faAngleDown} />
-            </button>
-          </div>
-          <div className="dropdown-menu">
-            <div className="dropdown-content has-background-info-light">
-              {projects.map((project, index) => {
-                switch (typeof id) {
-                  case "string":
-                    if (project.id === parseInt(id)) {
-                      return "";
-                    }
-                }
-                return (
-                  <>
-                    <Link
-                      to={`/project/${project.id}`}
-                      className="dropdown-item is-size-4"
-                    >
-                      {project.title}
-                    </Link>
-                    {index === projects.length - 1 ? (
-                      ""
-                    ) : (
-                      <hr className="dropdown-divider"></hr>
-                    )}
-                  </>
-                );
-              })}
-            </div>
-          </div>
-        </div>
+        <ProjectDropdown id={id} projectList={projects} />
 
         <button
           className="button has-text-weight-bold is-size-4 is-pulled-right"
@@ -109,24 +77,6 @@ const Projects: React.FC = () => {
         <div className="content">
           <ProjectDetails project={project} />
           <hr />
-
-          {/* Attachments Section
-          <div className="layout">
-            <h2 className="has-text-weight-semibold is-italic">
-              &emsp; Attachments
-            </h2>
-            <div className="vertical-center">
-              <button className="button has-text-weight-bold mr-6">
-                <span className="icon-text">
-                  <span className="icon">
-                    <FontAwesomeIcon icon={faPlus} />
-                  </span>
-                  <span className="is-size-4">Add file</span>
-                </span>
-              </button>
-            </div>
-          </div>
-          <hr /> */}
 
           {/* Project jobs section */}
           <div className="layout">

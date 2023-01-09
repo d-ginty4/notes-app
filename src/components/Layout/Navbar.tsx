@@ -43,8 +43,8 @@ export const Navbar: React.FC<Props> = ({
     //     break
     //   default: setActiveItem(temp)
     // }
-    console.log("Active item");
-    console.log(activeItem);
+    //console.log("Active item");
+    //console.log(activeItem);
     setItems(
       navItems.filter((item) => {
         return item.page !== activeItem.page;
